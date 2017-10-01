@@ -155,6 +155,10 @@ function checkboard(size){
 
 function sailboat(size){
 
+    const mastHeight = size + 4;
+    const bodySize = mastHeight + 20;
+    const mastMargin = mastHeight + 7;
+
     function spaceGenerator(spaceCount){
         //Generates needed amount of spaces
         if (spaceCount <= 0){
@@ -168,7 +172,7 @@ function sailboat(size){
     function rowGenerator(lastRow , starsCount , height) {
         //Generates needed amount of stars for each row
 
-        const space = spaceGenerator(14);
+        const space = spaceGenerator(mastMargin);
         if(height < starsCount){
             return ' *';
         }
@@ -185,15 +189,13 @@ function sailboat(size){
         return  space + '*';
     }
 
-    //TODO make difference on size
-    function mast(n){
-        console.log(rowGenerator('' ,0 ,5));
+    function mast(){
+        console.log(rowGenerator('' ,0 ,mastHeight));
     }
 
-    function body(n){
+    function body(size){
 
-        //TODO Do not Hard Code
-            const firstRowStars = 20;
+            const bodyHeight = size;
 
             function spaceGenerator(spaceCount){
                 //Generates needed amount of spaces
@@ -219,11 +221,11 @@ function sailboat(size){
             function createTriangle(starCount){
                 //Final function that returns the triangle
 
-                if (starCount <= firstRowStars -10){
+                if (starCount <= bodyHeight * 0.6){
                     return ' ';
                 }
 
-                if(starCount === firstRowStars){
+                if(starCount === bodyHeight){
 
                     const data = rowGenerator(starCount);
                     console.log(data);
@@ -232,7 +234,7 @@ function sailboat(size){
                 }
                 else if(starCount === 1){
 
-                    const spaceCount = (firstRowStars - starCount)/2 +1;
+                    const spaceCount = (bodyHeight - starCount)/2 +1;
                     const spaces = spaceGenerator(spaceCount);
 
                     const data = rowGenerator(starCount);
@@ -240,7 +242,7 @@ function sailboat(size){
                 }
                 else{
 
-                    const spaceCount = (firstRowStars - starCount)/2;
+                    const spaceCount = (bodyHeight - starCount)/2;
                     const spaces = spaceGenerator(spaceCount);
 
                     const data = rowGenerator(starCount);
@@ -250,12 +252,12 @@ function sailboat(size){
                 }
             }
 
-            createTriangle(firstRowStars);
+            createTriangle(bodyHeight);
 
     }
 
-    mast(5);
-    body(54);
+    mast();
+    body(bodySize);
 }
 
-//sailboat(5);
+sailboat(10);
