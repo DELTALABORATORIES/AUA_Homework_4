@@ -109,3 +109,44 @@ function reverse(string){
 }
 
 //reverse('Hello');
+
+//Function for drawing an n by n checkerboard on the screen
+
+function checkboard(size){
+
+    function rowGenerator(starsCount) {
+        //Generates needed amount of stars for each row
+
+        if(starsCount <= 0){
+            return ' ';
+        }
+
+        const stars = "* " + rowGenerator(starsCount - 1);
+        return stars;
+    }
+
+    const row = rowGenerator(size);
+
+    function result(rowNumber , rowType){
+
+        if (rowNumber <= 0){
+            return ' ';
+        }
+        else if(rowType === 0){
+            console.log(row);
+            const rowTypeChanged = 1;
+            result(rowNumber -1 , rowTypeChanged);
+        }
+        else {
+            console.log(' ' + row);
+            const rowTypeChanged = 0;
+            result(rowNumber -1 , rowTypeChanged);
+        }
+
+    }
+
+    result(size , 0);
+
+}
+
+//checkboard(8);
