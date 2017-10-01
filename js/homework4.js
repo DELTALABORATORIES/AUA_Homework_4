@@ -71,11 +71,11 @@ function pow(base , n){
     function result(lastNumber , n){
 
         if (n <= 0){
+            console.log(lastNumber);
             return ' ';
         }
 
         lastNumber = lastNumber * base;
-        console.log(lastNumber);
 
         result(lastNumber , n-2);
     }
@@ -84,3 +84,28 @@ function pow(base , n){
 }
 
 //pow(2 , 3);
+
+//Function for reversing a string with recursion
+
+function reverse(string){
+
+    const stringLength = string.length;
+    const lastElementPosition = stringLength - 1;
+
+
+    function result(lastResult , num){
+
+        if (num < 0){
+            console.log( lastResult);
+            return ' ';
+        }
+
+        const  de = lastResult + string[num];
+        result(de , num - 1)
+    }
+
+    result( ' ', lastElementPosition);
+
+}
+
+//reverse('Hello');
