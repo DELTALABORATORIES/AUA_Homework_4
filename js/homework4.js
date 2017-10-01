@@ -96,7 +96,7 @@ function reverse(string){
     function result(lastResult , num){
 
         if (num < 0){
-            console.log( lastResult);
+            console.log(lastResult);
             return ' ';
         }
 
@@ -150,3 +150,112 @@ function checkboard(size){
 }
 
 //checkboard(8);
+
+//Function for drawing a sailboat of that height on the screen using '*' characters
+
+function sailboat(size){
+
+    function spaceGenerator(spaceCount){
+        //Generates needed amount of spaces
+        if (spaceCount <= 0){
+            return ' ';
+        }
+
+        const space = ' ' + spaceGenerator(spaceCount - 1);
+        return space;
+    }
+
+    function rowGenerator(lastRow , starsCount , height) {
+        //Generates needed amount of stars for each row
+
+        const space = spaceGenerator(14);
+        if(height < starsCount){
+            return ' *';
+        }
+        else if(starsCount === 0){
+            const stars = space + lastRow + "* ";
+            console.log(stars);
+            rowGenerator(stars , starsCount+1 , height);
+        }
+        else{
+            const stars = lastRow + "* ";
+            console.log(stars);
+            rowGenerator(stars , starsCount + 1 , height);
+        }
+        return  space + '*';
+    }
+
+    //TODO make difference on size
+    function mast(n){
+        console.log(rowGenerator('' ,0 ,5));
+    }
+
+    function body(n){
+
+        //TODO Do not Hard Code
+            const firstRowStars = 20;
+
+            function spaceGenerator(spaceCount){
+                //Generates needed amount of spaces
+                if (spaceCount <= 0){
+                    return ' ';
+                }
+
+                const space = ' ' + spaceGenerator(spaceCount - 1);
+                return space;
+            }
+
+            function rowGenerator(starsCount) {
+                //Generates needed amount of stars for each row
+
+                if(starsCount <= 0){
+                    return ' ';
+                }
+
+                const stars = "* " + rowGenerator(starsCount - 1);
+                return stars;
+            }
+
+            function createTriangle(starCount){
+                //Final function that returns the triangle
+
+                if (starCount <= firstRowStars -10){
+                    return ' ';
+                }
+
+                if(starCount === firstRowStars){
+
+                    const data = rowGenerator(starCount);
+                    console.log(data);
+
+                    createTriangle(starCount - 2);
+                }
+                else if(starCount === 1){
+
+                    const spaceCount = (firstRowStars - starCount)/2 +1;
+                    const spaces = spaceGenerator(spaceCount);
+
+                    const data = rowGenerator(starCount);
+                    console.log(spaces + data);
+                }
+                else{
+
+                    const spaceCount = (firstRowStars - starCount)/2;
+                    const spaces = spaceGenerator(spaceCount);
+
+                    const data = rowGenerator(starCount);
+                    console.log(spaces + data);
+
+                    createTriangle(starCount - 2);
+                }
+            }
+
+            createTriangle(firstRowStars);
+
+    }
+
+    mast(5);
+    body(54);
+}
+
+//sailboat(5);
