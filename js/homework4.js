@@ -1,4 +1,4 @@
-//This Function prints an upside-down triangle to the console of the given height
+//Function for printing an upside-down triangle to the console of the given height
 function triangleStars(triangleHeight){
 
     const firstRowStars = 1 + (triangleHeight - 1)*2;
@@ -63,3 +63,24 @@ function triangleStars(triangleHeight){
 }
 
 //triangleStars(5);
+
+//Function for returning the result of multiplying the base times itself n time
+
+function pow(base , n){
+
+    function result(lastNumber , n){
+
+        if (n <= 0){
+            return ' ';
+        }
+
+        lastNumber = lastNumber * base;
+        console.log(lastNumber);
+
+        result(lastNumber , n-2);
+    }
+
+    result(base , n);
+}
+
+//pow(2 , 3);
